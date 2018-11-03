@@ -1,0 +1,23 @@
+body{
+    background-color: rgba(185, 197, 119, 0.467);
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 17px;
+	line-height: 25px;
+    /* color: #333; */
+    color: rgb(12, 11, 3);
+}
+h1 {
+
+    font-family:Death-Star, sans-serif;
+    color:rgb(15, 107, 38);
+    text-align: center;
+    font-size: 65px;
+    text-shadow: 7px 7px 7px black;
+
+}
+.wrapper
+{
+    width: 960px;
+    margin:0 auto 0 auto;
+    padding: 10px;
+}
