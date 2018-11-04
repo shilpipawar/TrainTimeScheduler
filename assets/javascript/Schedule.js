@@ -46,7 +46,7 @@ $(document).ready(function () {
 
     //Adding Data in table
     database.ref("/schedule").orderByChild("dateAdded").on("child_added", function (childSnapshot) {
-
+        //Remove Records From Table
         var removeButton = $("<button>").html("<span class='glyphicon glyphicon-remove'></span>").addClass("removeButton").attr("data-index", index).attr("data-key", childSnapshot.key);
 
         var firstTime = childSnapshot.val().firstTime;
@@ -55,10 +55,16 @@ $(document).ready(function () {
         console.log(firstTrain);
         console.log(firstTime);
         var currentTime = moment();
+        console.log("currentTime" + currentTime);
         var currentTimeCalc = moment().subtract(1, "years");
+        console.log("currentTimeCalc " + currentTimeCalc);
         var diffTime = moment().diff(moment(firstTrain), "minutes");
+        console.log("diffTime "+ diffTime);
         var tRemainder = diffTime % tFrequency;
+        console.log("tRemainder " + tRemainder);
         var minutesRemaining = tFrequency - tRemainder;
+        console.log("minutesRemaining " + minutesRemaining);
+
         var nextTRain = moment().add(minutesRemaining, "minutes").format("hh:mm A");
         var beforeCalc = moment(firstTrain).diff(currentTimeCalc, "minutes");
         var beforeMinutes = Math.ceil(moment.duration(beforeCalc).asMinutes());
@@ -95,6 +101,8 @@ $(document).ready(function () {
             .append(cell6)
 
         $("#Add-Schedule").append(newRow);
+        $("#schedule-h1").text(currentTime);
+        // $("#schedule-h1").text("Current Train Schedule: "+ currentTime);
 
         index++;
         console.log(index);

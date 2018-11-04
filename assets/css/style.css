@@ -1,23 +1,35 @@
 body{
-    background-color: rgba(185, 197, 119, 0.467);
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-image: url("../images/Train_Image.png");
+    /* font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size: 17px;
-	line-height: 25px;
+    line-height: 25px;
+    */
     /* color: #333; */
-    color: rgb(12, 11, 3);
+    /* color: rgb(12, 11, 3); */
 }
 h1 {
 
-    font-family:Death-Star, sans-serif;
-    color:rgb(15, 107, 38);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:white;
     text-align: center;
     font-size: 65px;
-    text-shadow: 7px 7px 7px black;
 
+    /*  */
+}
+h3{
+    text-align: center;
+    font-size: 35px;
 }
 .wrapper
 {
     width: 960px;
     margin:0 auto 0 auto;
     padding: 10px;
+}
+.trainheader{
+    /* background-color:lightblue; */
+    padding: 10px;
+    color:white;
+    font-weight: bolder;
+    font-weight: bolder;
 }
