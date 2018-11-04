@@ -71,13 +71,13 @@ $(document).ready(function () {
 
         if ((currentTimeCalc - firstTrain) < 0) {
             nextTrain = childSnapshot.val().firstTime;
-            console.log("Before First Train");
+            console.log("Before First Train: " +nextTrain);
             minutesRemaining = beforeMinutes;
         }
         else {
             nextTrain = moment().add(minutesRemaining, "minutes").format("hh:mm A");
             minutesRemaining = tFrequency - tRemainder;
-            console.log("Working");
+            console.log("minutesRemaining" + minutesRemaining);
         }
 
         console.log("index  " + index);
@@ -102,6 +102,12 @@ $(document).ready(function () {
 
         $("#Add-Schedule").append(newRow);
         $("#schedule-h1").text(currentTime);
+
+        //Adding moving test message
+        if(minutesRemaining < 10){
+            console.log("nextTrain" + nextTrain);
+            $("#martext").html("<marquee>" + "Welcome to Any time train time " + childSnapshot.val().name + " is arriving in " + minutesRemaining + " min" + "</marquee>");
+        }
         // $("#schedule-h1").text("Current Train Schedule: "+ currentTime);
 
         index++;
