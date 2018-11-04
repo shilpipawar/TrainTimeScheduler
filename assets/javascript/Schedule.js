@@ -50,7 +50,7 @@ $(document).ready(function () {
         var removeButton = $("<button>").html("<span class='glyphicon glyphicon-remove'></span>").addClass("removeButton").attr("data-index", index).attr("data-key", childSnapshot.key);
 
         var firstTime = childSnapshot.val().firstTime;
-        var tFrequency = parseInt(childSnapshot.val().frequency);
+        var vfrequency = parseInt(childSnapshot.val().frequency);
         var firstTrain = moment(firstTime, "HH:mm").subtract(1, "years");
         console.log(firstTrain);
         console.log(firstTime);
@@ -60,9 +60,9 @@ $(document).ready(function () {
         console.log("currentTimeCalc " + currentTimeCalc);
         var diffTime = moment().diff(moment(firstTrain), "minutes");
         console.log("diffTime "+ diffTime);
-        var tRemainder = diffTime % tFrequency;
+        var tRemainder = diffTime % vfrequency;
         console.log("tRemainder " + tRemainder);
-        var minutesRemaining = tFrequency - tRemainder;
+        var minutesRemaining = vfrequency - tRemainder;
         console.log("minutesRemaining " + minutesRemaining);
 
         var nextTRain = moment().add(minutesRemaining, "minutes").format("hh:mm A");
@@ -76,7 +76,7 @@ $(document).ready(function () {
         }
         else {
             nextTrain = moment().add(minutesRemaining, "minutes").format("hh:mm A");
-            minutesRemaining = tFrequency - tRemainder;
+            minutesRemaining = vfrequency - tRemainder;
             console.log("minutesRemaining" + minutesRemaining);
         }
 
@@ -109,14 +109,11 @@ $(document).ready(function () {
             $("#martext").html("<marquee>" + "Welcome to Any time train time " + childSnapshot.val().name + " is arriving in " + minutesRemaining + " min" + "</marquee>");
         }
         // $("#schedule-h1").text("Current Train Schedule: "+ currentTime);
-
         index++;
         console.log(index);
 
     }, function (error) {
-
         console.log(error.code);
-
     });
 
     function submitRow() {
@@ -132,6 +129,7 @@ $(document).ready(function () {
         $(".row-" + $(this).attr("data-index")).children().eq(2).html(newDestination);
         $(".row-" + $(this).attr("data-index")).children().eq(3).html(newFrequency);
         $(this).toggleClass("updateButton").toggleClass("submitButton");
+        location.reload();
     };
 
     $(document).on("click", ".removeButton", removeRow);
